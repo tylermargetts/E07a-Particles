@@ -19,19 +19,19 @@ PARTICLE_MAX_SCALE = 0.08
 PARTICLE_MIN_X = -20
 PARTICLE_MAX_X = 20
 PARTICLE_VELOCITY_X = 0
-PARTICLE_VELOCITY_Y = 4
+PARTICLE_VELOCITY_Y = 7
 PARTICLE_MIN_AX = -0.1
 PARTICLE_MAX_AX = 0.1
 PARTICLE_MIN_AY = -0.1
 PARTICLE_MAX_AY = 0.1
 PARTICLE_MIN_DECAY = 0.001
-PARTICLE_MAX_DECAY = 0.01
+PARTICLE_MAX_DECAY = 0.002
 
 
 class Particle(arcade.Sprite):
     def __init__(self, asset, scale, x, y, dx, dy, ax, ay, decay):
         super().__init__("assets/{}.png".format(asset), scale)
-        self.center_x = x
+        self.center_x = x + random.randint(-100, 100)
         self.center_y = y
         self.dx = dx
         self.dy = dy
@@ -41,16 +41,16 @@ class Particle(arcade.Sprite):
         self.color_pos = 0
 
         self.particle_colors = [
-            (open_color.red_5, 4)
-            ,(open_color.red_4, 5)
-            ,(open_color.red_3, 6)
-            ,(open_color.red_2, 7)
-            ,(open_color.red_1, 8)
-            ,(open_color.teal_1, 8)
-            ,(open_color.teal_2, 7)
-            ,(open_color.teal_3, 6)
-            ,(open_color.teal_4, 5)
-            ,(open_color.teal_5, 4)
+            (open_color.yellow_4, 4)
+            ,(open_color.orange_4, 5)
+            ,(open_color.orange_3, 6)
+            ,(open_color.orange_2, 7)
+            ,(open_color.yellow_1, 8)
+            ,(open_color.orange_1, 8)
+            ,(open_color.yellow_2, 7)
+            ,(open_color.orange_3, 6)
+            ,(open_color.orange_4, 5)
+            ,(open_color.yellow_5, 4)
         ]
         (self.color, self.lifetime) = self.particle_colors[self.color_pos]
         self.alive = True
@@ -128,17 +128,17 @@ class Window(arcade.Window):
         self.particle_list.draw()
 
     def on_mouse_press(self, x, y, button, modifiers):
-        self.x = x
+        self.x = x + random.randint(-100, 100)
         self.y = y
         self.mouse_down = True
 
     def on_mouse_release(self, x, y, button, modifiers):
-        self.x = x
+        self.x = x + random.randint(-100, 100)
         self.y = y
         self.mouse_down = False
 
     def on_mouse_motion(self, x, y, dx, dy):
-        self.x = x
+        self.x = x + random.randint(-100, 100)
         self.y = y
 
 
